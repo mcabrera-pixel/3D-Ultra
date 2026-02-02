@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D-Ultra Motion Generator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">3D-Ultra <span class="badge">PRO</span></div>
+            <h1>Motion Generator Hub</h1>
+        </header>
+
+        <main>
+            <div class="control-panel">
+                <div class="input-group">
+                    <label for="gradio-url">Enlace Público de Colab (Gradio URL)</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="gradio-url" placeholder="https://xxxxxxxx.gradio.live">
+                        <button id="connect-btn">Conectar Fuente</button>
+                    </div>
+                    <p class="hint">Copia el link 'Running on public URL' de tu cuaderno de Colab y pégalo aquí.</p>
+                </div>
+            </div>
+
+            <div class="visualizer-container">
+                <div id="placeholder-state" class="state-message">
+                    <div class="loader-ring"></div>
+                    <p>Esperando conexión con el Neural Engine...</p>
+                </div>
+                <iframe id="gradio-frame" src="" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const connectBtn = document.getElementById('connect-btn');
+        const urlInput = document.getElementById('gradio-url');
+        const frame = document.getElementById('gradio-frame');
+        const placeholder = document.getElementById('placeholder-state');
+
+        connectBtn.addEventListener('click', () => {
+            const url = urlInput.value.trim();
+            if (url) {
+                frame.src = url;
+                frame.style.opacity = '0';
+                placeholder.style.display = 'none';
+                
+                // Fade in effect
+                setTimeout(() => {
+                    frame.style.opacity = '1';
+                }, 500);
+            }
+        });
+    </script>
+</body>
+</html>
