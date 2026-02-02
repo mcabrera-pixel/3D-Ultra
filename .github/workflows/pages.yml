@@ -30,7 +30,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './01_Web'
+          path: './page arquitectura _Mcco'
       
       - name: Deploy to GitHub Pages
         id: deployment
