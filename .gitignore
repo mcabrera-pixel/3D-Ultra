@@ -4,3 +4,8 @@
 
 # Opcional: excluir todos los MP4 grandes
 # *.mp4
+
+node_modules/
+.wrangler/
+*.log
+*.bat
